@@ -1,0 +1,212 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "-PROCESO-",
+    "description": "-DESCRIPCION-"
+  },
+  "host": "-HOST-",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "basePath": "/integracion/api",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/tramites/proceso/-id_tramite-/tarea/-id_tarea-": {
+      "post": {
+        "summary": "Inicio Trámite SIMPLE",
+        "description": "Servicio responsable de iniciar un trámite en SIMPLE.",
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Formulario entrada para iniciar trámite",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Trámite iniciado con éxito.",
+            "schema": {
+              "$ref": "#/definitions/output"
+            }
+          },
+          "400": {
+            "description": "Input no cumple con lo especificado.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "Trámite o terea no encontrado",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "Problemas internos.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "default": {
+            "description": "Error general de aplicación",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "request": {
+      "type": "object",
+      "properties": {
+        "callback": {
+          "type": "string"
+        },
+        "callback-id": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            -DATA_ENTRADA-
+          }
+        }
+        -AUTH-
+      }
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "idInstancia": {
+          "type": "string"
+        },
+        "output": {
+          "$ref": "#/definitions/output"
+        },
+        "idEtapa": {
+          "type": "string"
+        },
+        "secuencia": {
+          "type": "integer"
+        },
+        "proximoFormulario": {
+          "type": "object",
+          "properties": {
+            "form": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "campos": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/campo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        -OUTPUT-
+      }
+    },
+    "campo": {
+      "type": "object",
+      "properties": {
+        "nombre": {
+          "type": "string"
+        },
+        "tipo_control": {
+          "type": "string"
+        },
+        "tipo": {
+          "type": "string"
+        },
+        "obligatorio": {
+          "type": "boolean"
+        },
+        "solo_lectura": {
+          "type": "boolean"
+        },
+        "dominio_valores": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/valores_control"
+          }
+        },
+        "valor": {
+          "type": "string"
+        }
+      }
+    },
+    "valores_control": {
+      "type": "object",
+      "properties": {
+        "clave": {
+          "type": "string"
+        },
+        "valor": {
+          "type": "string"
+        }
+      }
+    },
+
+    "simple":{
+      "type": "object",
+      "properties":{
+        "user": {
+          "type": "string"
+        }
+      }
+    },
+    "clave_unica":{
+      "type": "object",
+      "required": ["rut","nombres","apellidos","email"],
+      "properties":{
+        "rut":{
+          "type": "string"
+        },
+        "nombres": {
+          "type": "string"
+        },
+        "apellidos":{
+          "description": "Apellidos separados por ;",
+          "type": "string"
+        },
+        "email":{
+          "type": "string"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "codigo": {
+          "type": "integer"
+        },
+        "mensaje": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

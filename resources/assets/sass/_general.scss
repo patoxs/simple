@@ -1,0 +1,11 @@
+.btn-simple-light {
+  background-color: #ffffff;
+  color: #0054AB;
+  font-weight: bold;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
+    color: #0054AB;
+  }
+}

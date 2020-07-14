@@ -1,0 +1,34 @@
+<div class="cal-month-day <%= cls %>">
+	<span class="pull-right" data-cal-date="<%= data_day %>" data-cal-view="day" data-toggle="tooltip" title="<%= tooltip %>"><%= day %></span>
+	<% if (events.length > 0) { %>
+		<div class="events-list" data-cal-start="<%= start %>" data-cal-end="<%= end %>">
+			<% swres=true; swdis=true; swbloq=true;  %>
+			<% _.each(events, function(event) { %>
+				<% 
+				var timeacutal=new Date();
+				var cita=new Date(event.start);
+				if(event.estado=='D' && swdis && (cita>timeacutal)){
+					swdis=false;
+					swbloq=false;
+					swres=false;
+					%>
+					<div data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>"
+						class="pull-left event <%= event['class'] %>" data-toggle="tooltip"
+						></div>
+					<%
+				}
+				%>
+			<% }); %>
+			<%
+			if(swbloq || swdis){
+				swbloq=false;
+				swdis=false;
+				%>
+				<div data-event-id="0" data-event-class="eventradocup"
+					class="pull-left event eventradocup" data-toggle="tooltip"
+					></div>
+				<%
+			} %>
+		</div>
+	<% } %>
+</div>

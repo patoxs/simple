@@ -1,0 +1,1 @@
+docker exec simple2_web bash -c "php artisan migrate"

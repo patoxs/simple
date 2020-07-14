@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2018 by original authors @ fontello.com</metadata>
+<defs>
+<font id="simple-icons" horiz-adv-x="1000" >
+<font-face font-family="simple-icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="archivo" unicode="&#xe800;" d="M780 607c20-19 36-59 36-87l0-612c0-28-22-51-51-51l-714 0c-28 0-51 23-51 51l0 850c0 28 23 51 51 51l476 0c28 0 68-16 87-36l166-166z m-236 130l0-200 200 0c-3 9-8 18-12 22l-166 166c-4 4-13 9-22 12z m204-812l0 544-221 0c-28 0-51 23-51 51l0 221-408 0 0-816 680 0z" horiz-adv-x="857" />
+
+<glyph glyph-name="claveunica" unicode="&#xe801;" d="M312 812l0-148c-107-64-179-181-179-314 0-203 165-367 367-367 203 0 367 164 367 367 0 134-73 251-180 315l0 148c183-74 313-254 313-463 0-276-224-500-500-500-276 0-500 224-500 500 0 209 129 388 312 462z m126-222l0 260 125 0 0-261c89-27 155-110 155-209 0-121-98-218-219-218-121 0-219 97-219 218 0 99 67 183 158 210z m62-319c60 0 109 49 109 109 0 61-49 109-109 109-60 0-109-48-109-109 0-60 49-109 109-109z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>

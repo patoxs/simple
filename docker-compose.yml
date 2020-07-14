@@ -1,0 +1,92 @@
+version: "3.6"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./setup/Dockerfile
+    container_name: simple2_web
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "${APP_PORT}:80"
+    env_file:
+      - ./setup/.env
+    working_dir: /var/www/simple
+    volumes:
+      - ./:/var/www/simple
+    networks:
+      - esnet
+    depends_on:
+      - db
+      - redis
+      - elasticsearch
+  db:
+    image: "mysql:5.7"
+    container_name: simple2_db
+    command: ["--sql-mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"]
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "${DB_PORT}:3306"
+    restart: unless-stopped
+    networks:
+      - esnet
+  redis:
+    image: "redis"
+    container_name: simple2_redis
+    networks:
+      - esnet
+    ports:
+      - "${REDIS_PORT}:6379"
+    depends_on:
+      - db
+  elasticsearch:
+    image: "elasticsearch:5.6"
+    container_name: simple2_elastic
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    ports:
+      - "${ELASTICSEARCH_PORT}:9200"
+    networks:
+      - esnet
+    depends_on:
+      - db
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: simple2_rabbit
+    hostname: "simple_rabbit"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+      RABBITMQ_QUEUE: ${RABBITMQ_QUEUE}
+      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_DEFAULT_VHOST}
+      DOWNLOADS_MAX_JOBS_PER_USER: ${DOWNLOADS_MAX_JOBS_PER_USER}
+    ports:
+      - "${RABBITMQ_PORT_MANAGER}:15672"
+      - "${RABBITMQ_PORT}:5672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      - rabbitmq_logs:/var/log/rabbitmq
+    networks:
+      - esnet
+
+#Docker Volumes
+volumes:
+  db_data:
+  elasticsearch_data:
+  rabbitmq_data:
+  rabbitmq_logs:
+
+#Docker Networks
+networks:
+  esnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.5.0.0/16

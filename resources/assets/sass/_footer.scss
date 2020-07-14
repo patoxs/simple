@@ -1,0 +1,168 @@
+.footer {
+  padding-top: 29px;
+  bottom: 0px;
+  width: 100%;
+  color: #ffffff;
+  background-color: $footer-bg;
+  a {
+    line-height: 26px;
+    font-size: 14px;
+    color: inherit;
+  }
+  .bicolor {
+    margin-top: 30px;
+    width: 170px;
+    height: 10px;
+    span {
+      display: block;
+      float: left;
+      height: 100%;
+      &.azul {
+        background: #0f69b4;
+        width: 46%;
+      }
+      &.rojo {
+        background: #EB3646;
+        width: 54%;
+      }
+    }
+  }
+}
+
+#footer-simple {
+
+  padding-top: 30px;
+  color: $footer-txt;
+  background-color: $footer-bg;
+
+  &.comisaria {
+    background-color: $footer-bg;
+  }
+
+  .iniciativa {
+    font-size: 1rem;
+  }
+
+  .logos-container {
+    float: left;
+  }
+
+  .ft-text-info {
+    margin-top: 35px;
+    font-size: 1rem;
+    line-height: 22px;
+    font-family: Roboto;
+    a {
+      color: $footer-txt;
+      text-decoration: underline;
+    }
+  }
+
+  .barra-vertical {
+    float: right;
+    width: 1px;
+    height: 107px;
+    background-color: $footer-txt;
+    margin-top: 25px;
+  }
+
+  .ft-logo-dgd {
+    margin-right: 34px;
+  }
+
+  .ft-logo-powered {
+    margin-left: 5px;
+  }
+
+  .ft-logo-cc {
+    margin-right: 5px;
+  }
+
+  .text-segpres {
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    font-family: Roboto;
+
+    a {
+      color: $footer-txt;
+    }
+
+  }
+
+  #footer-bootom {
+    padding-top: 15px;
+    //padding-bottom: 26px;
+  }
+
+  .gob-lines {
+    .blue {
+      background-color:#0F69C4;
+      height: 6px;
+      float: left;
+      width: 58px;
+    }
+    .red {
+      background-color:#E22C2C;
+      float: left;
+      height: 6px;
+      width: 82px;
+    }
+  }
+
+  .list-url {
+    padding: 0;
+    //margin: 0;
+    .items-links {
+      list-style: none;
+      //margin-bottom: 20px;
+      line-height: 50px;
+      a {
+        color: #FFFFFF;
+        font-size: 16px;
+        text-decoration: underline;
+        font-family: 'Roboto Regular', sans-serif;
+        &:hover {
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+
+  .link-terms {
+    color: #FFFFFF;
+    font-size: 16px;
+    text-decoration: underline;
+    font-family: 'Roboto Regular', sans-serif;
+    &:hover {
+      color: #FFFFFF;
+    }
+  }
+
+}
+
+.chosen-container-single .chosen-search-input {
+  display: block !important;
+}
+
+@media (max-width: 400px) {
+  #footer-simple {
+    .barra-vertical {
+      display: none;
+    }
+    .logos-container {
+      text-align: center;
+
+      .ft-logo-dgd {
+        margin: 10px auto 30px auto;
+      }
+      .ft-logo-segpres {
+        margin: 30px auto;
+      }
+    }
+
+    #footer-bootom {
+      text-align: center;
+      font-family: Roboto;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<span id="cal-slide-tick" style="display: none"></span>
+<div id="cal-slide-content" class="cal-event-list">
+	<ul class="unstyled list-unstyled">
+		<% _.each(events, function(event) { %>
+			<li class="clearfix">
+				<span class="pull-left event <%= event['class'] %>"></span>&nbsp;
+				<%= event.title %>
+			</li>
+		<% }) %>
+	</ul>
+</div>
