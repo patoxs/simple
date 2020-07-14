@@ -24,15 +24,12 @@
 #    and best practices on handling the access key credentials.
 
 on: push
-
 name: Deploy to Amazon ECR
-
 jobs:
   deploy:
     name: Deploy
     runs-on: self-hosted
     #runs-on: ubuntu-latest
-
     steps:
     - name: Checkout
       uses: actions/checkout@master
