@@ -67,7 +67,7 @@ jobs:
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_region: ${{ secrets.AWS_DEFAULT_REGION }}
       with:
-        args: set image --record deployment.apps/php php=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        args: set image --record deployment.apps/php php=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -n ${{ secrets.NAMESPACE }}
     - name: Verify deploy on EKS
       uses: qazz92/kubectl@1.0.3
       env:
@@ -76,5 +76,5 @@ jobs:
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_region: ${{ secrets.AWS_DEFAULT_REGION }}
       with:
-        args: '"rollout status deployment.apps/php"'
+        args: '"rollout status deployment.apps/php -n ${{ secrets.NAMESPACE }}"'
     
