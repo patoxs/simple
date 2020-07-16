@@ -24,6 +24,10 @@
 #    and best practices on handling the access key credentials.
 
 on: push
+env:
+  ECR_REGISTRY: a
+  ECR_REPOSITORY: b 
+  IMAGE_TAG: c
 name: Deploy to Amazon ECR
 jobs:
   deploy:
